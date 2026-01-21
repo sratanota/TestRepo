@@ -15,8 +15,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug: list files
+        run: |
+          pwd
+          ls -la
       - name: Compile main.cpp
-        run: g++ -std=c++17 ./negarr.cpp ./testq1.cpp -o ./main
+        run: g++ -std=c++17 negarr.cpp testq1.cpp -o ./main
 
       - name: run test
         run: ./main
