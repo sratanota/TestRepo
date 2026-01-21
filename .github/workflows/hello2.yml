@@ -22,7 +22,7 @@ jobs:
           
       - name: Compile main.cpp
         run: 
-           g++ -std=c++17 negarr.cpp testq1.cpp -o main
+           g++ -std=c++11 negarr.cpp proxy.cpp testq1.cpp -o main
 
       - name: run test
         run: ./main
