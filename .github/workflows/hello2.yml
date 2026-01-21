@@ -1,7 +1,9 @@
 name: Hello World Workflow
 
-on: [push] # This workflow runs every time a push is made to the repository
-
+on: 
+ # This workflow runs every time a push is made to the repository
+  push:
+     branches: ["main"]
 jobs:
   say-hello: # Name of the job
     runs-on: ubuntu-latest # The job runs on the latest version of an Ubuntu virtual machine
