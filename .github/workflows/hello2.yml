@@ -1,0 +1,29 @@
+name: Hello World Workflow
+
+on: 
+ # This workflow runs every time a push is made to the repository
+  push:
+     branches: ["main"]
+jobs:
+  say-hello: # Name of the job
+    runs-on: ubuntu-latest # The job runs on the latest version of an Ubuntu virtual machine
+    steps:
+     
+      - name: Greet the world # Name of the step
+        run: echo "Hello, World!" # Command to run in the shell
+        
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: List file
+        run: |
+           pwd
+           ls -la
+          
+      - name: Compile main.cpp
+        run: |
+           cd TestRepo
+           g++ -std=c++17 negarr.cpp testq1.cpp -o main
+
+      - name: run test
+        run: ./main
