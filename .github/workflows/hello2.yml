@@ -8,6 +8,7 @@ jobs:
   say-hello: # Name of the job
     runs-on: ubuntu-latest # The job runs on the latest version of an Ubuntu virtual machine
     steps:
+      - uses: actions/checkout@v4
       - name: Greet the world # Name of the step
         run: echo "Hello, World!" # Command to run in the shell
       - name: C/C++ code linter (clang-tidy, clang-format, and cppcheck)
