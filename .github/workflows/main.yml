@@ -1,19 +1,30 @@
 name: build code
+
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
       - name: compile
-        run: 
-           g++ -std=c++11 negarr.cpp proxy.cpp testq1.cpp -o main
+        run: |
+          g++ -std=c++11 negarr.cpp proxy.cpp testq1.cpp -o main
+
+      - name: upload build output   
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: main
+
   package:
-    needs: build  
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -27,9 +38,7 @@ jobs:
 
       - name: create zip
         run: |
-          zip -r submission.zip \
-            *.cpp \
-            main
+          zip submission.zip *.cpp main
 
       - name: upload zip
         uses: actions/upload-artifact@v4
