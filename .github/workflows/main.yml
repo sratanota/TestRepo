@@ -12,3 +12,27 @@ jobs:
       - name: compile
         run: 
            g++ -std=c++11 negarr.cpp proxy.cpp testq1.cpp -o main
+  package:
+    needs: build  
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: download build output
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+
+      - name: create zip
+        run: |
+          zip -r submission.zip \
+            *.cpp \
+            main
+
+      - name: upload zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: submission
+          path: submission.zip
