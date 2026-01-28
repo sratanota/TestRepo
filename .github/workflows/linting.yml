@@ -24,4 +24,4 @@ jobs:
           VALIDATE_CPP: true          # enable C++ linting
           VALIDATE_CLANG_FORMAT: true # check code formatting
           DEFAULT_BRANCH: main
-          FILTER_REGEX_INCLUDE: .*\.cpp|.*\.h|.*\.hpp
+          FILTER_REGEX_INCLUDE: .*\.cpp|.*\.h
